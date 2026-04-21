@@ -1,0 +1,36 @@
+<h1>The name is Sam</h1>
+
+<input type="text" [(ngModel)]="a"  (keypress)="onlyNumber($event)"> &nbsp;
+<input type="text" [(ngModel)]="b">&nbsp;
+
+<button (click)="cal()">Calculate</button> &nbsp;
+
+<h1>{{c}}</h1>
+
+<app-counter></app-counter>
+<ul>
+<li *ngFor="let mov of movies; let i=index">{{i+1}} - {{mov}}</li>
+</ul>
+
+<input type="checkbox" [(ngModel)]="checkk">
+<p *ngIf="checkk">TVK</p>
+
+@if (checkk) {
+  <p>TVK</p>
+} @else {
+  <p>KVT</p>
+}
+
+<input type="checkbox" [(ngModel)]="what">
+<p [ngClass]="{'primary':what,'big':what}">Hiiii</p>
+
+<hr>
+
+
+<div>
+
+  <app-form></app-form>
+  <app-list></app-list>
+  <!-- <app-list [carNames]="carNames" (carDeleted)="onCarDeleted()"  ></app-list> -->
+
+</div>

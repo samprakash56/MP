@@ -1,0 +1,88 @@
+<div class="container">
+
+  <h1>Angular HttpClient</h1>
+  <h2>Posts</h2>
+
+  <!-- Add Post Card -->
+  <div class="card">
+    <h3>Add Post</h3>
+
+    <form (ngSubmit)="onSubmit()">
+        <input 
+        type="text" 
+        placeholder="Title"
+        [(ngModel)]="newPost.title"
+        name="title"
+        required
+        />
+
+        <textarea 
+        placeholder="Body"
+        [(ngModel)]="newPost.body"
+        name="body"
+        required
+        ></textarea>
+
+        <button type="submit" class="btn primary">
+        {{ isEditMode ? 'Update' : 'Create' }}
+        </button>
+    </form>
+  </div>
+
+  <div class="card">
+    <button type="submit" (click)="refresh()">Refresh</button>
+  </div>
+
+  <!-- Posts List -->
+  <div class="post-card" *ngFor="let post of posts">
+
+    <div class="post-content">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.body }}</p>
+    </div>
+
+    <div class="actions">
+        <button class="btn edit" (click)="onEdit(post)">Edit</button>
+        <button class="btn delete" (click)="onDelete(post.id)">Delete</button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Edit Modal -->
+@if (isEditMode) {
+  <div class="modal-overlay">
+
+    <div class="modal">
+
+      <h2>Update the details</h2>
+
+      <form (ngSubmit)="onUpdate()">
+
+        <input 
+          type="text"
+          placeholder="Title"
+          [(ngModel)]="newPost2.title"
+          name="editTitle"
+          required
+        />
+
+        <textarea 
+          placeholder="Body"
+          [(ngModel)]="newPost2.body"
+          name="editBody"
+          required
+        ></textarea>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn primary">Update</button>
+          <button type="button" class="btn cancel" (click)="back()">Cancel</button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+}

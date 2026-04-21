@@ -1,0 +1,33 @@
+<div>
+  <h2>Car List</h2>
+
+  @if (carNames.length > 0) {
+    <ul>
+      @for (car of carNames; track $index; let i = $index) {
+        <li>
+          {{ car }} &nbsp;
+        </li>
+    }
+    </ul>
+    <!-- <button (click)="deleteCar()">Delete</button> -->
+  } @else {
+    <p>No Cars Available</p>
+  }
+</div>
+
+<!--
+<div>
+  <h2>Car List</h2>
+
+  <ul *ngIf="carNames.length > 0; else noCars">
+    <li *ngFor="let car of carNames; let i = index">
+      {{ car }}
+      <button (click)="deleteCar(i)">Delete</button>
+    </li>
+  </ul>
+
+  <ng-template #noCars>
+    <p>No Cars Available</p>
+  </ng-template>
+</div>
+-->
